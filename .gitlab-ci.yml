@@ -1,3 +1,3 @@
 include:
   - project: 'gitops-demo/infra/templates'
-    file: '/teraform.gitlab-ci.yml'
+    file: '/terraform.gitlab-ci.yml'
