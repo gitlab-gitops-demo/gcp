@@ -15,7 +15,5 @@ resource "google_container_cluster" "primary" {
     labels = {
       Terraform = "true"
     }
-
-    tags = ["Terraform", "gitops-demo"]
   }
 }
