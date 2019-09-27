@@ -1,3 +1,14 @@
 include:
   - project: 'gitops-demo/infra/templates'
     file: '/terraform.gitlab-ci.yml'
+
+before_script:
+  - apk add --update curl
+  - curl -o terraform-provider-gitlab_v2.99.0 https://magic7s.s3-us-west-2.amazonaws.com/terraform-provider-gitlab/linux-amd64-terraform-provider-gitlab_v2.99.0
+  - chmod a+x terraform-provider-gitlab_v2.99.0
+  - curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/kubectl
+  - install kubectl /usr/local/bin/ && rm kubectl
+  - curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator
+  - install aws-iam-authenticator /usr/local/bin/ && rm aws-iam-authenticator
+  - terraform --version
+  - terraform init
