@@ -53,24 +53,3 @@ resource "kubernetes_cluster_role_binding" "gitlab-admin" {
     namespace = "kube-system"
   }
 }
-
-locals {
-  # GitLab API expects the cert in PEM format with \r\n and no carriage returns.
-  # https://docs.gitlab.com/ee/api/project_clusters.html
-  cert-one-line = "${replace(base64decode(google_container_cluster.primary.master_auth.0.cluster_ca_certificate), "\n", "\\r\\n")}"
-
-  gitlab-config = <<EOT
-{"name":"${google_container_cluster.primary.name}",
- "domain":"gitops-demo.com",
-"platform_kubernetes_attributes":
-{"api_url":"${google_container_cluster.primary.endpoint}",
-"token":"${data.kubernetes_secret.gitlab-admin-token.data.token}",
-"ca_cert":"${local.cert-one-line}"}
-}
-  EOT
-}
-
-resource "local_file" "gitlab-config" {
-  sensitive_content = local.gitlab-config
-  filename          = "gitlab-k8s-config"
-}
