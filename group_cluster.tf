@@ -2,10 +2,6 @@ data "gitlab_group" "gitops-demo-apps" {
   full_path = "gitops-demo/apps"
 }
 
-provider "gitlab" {
-  alias   = "use-pre-release-plugin"
-  version = "v2.99.0"
-}
 resource "gitlab_group_cluster" "gke_cluster" {
   group              = data.gitlab_group.gitops-demo-apps.id
   name               = google_container_cluster.primary.name
