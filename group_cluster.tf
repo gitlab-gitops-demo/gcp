@@ -1,6 +1,9 @@
 data "gitlab_group" "gitops-demo-apps" {
   full_path = "gitops-demo/apps"
 }
+provider "gitlab" {
+  version = "~> 2.4.0"
+}
 
 resource "gitlab_group_cluster" "gke_cluster" {
   group              = data.gitlab_group.gitops-demo-apps.id
