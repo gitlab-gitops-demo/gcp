@@ -2,7 +2,7 @@
 resource "google_container_cluster" "primary" {
   name               = "gitops-demo-gke"
   location           = "us-west1-a"
-  initial_node_count = 7
+  initial_node_count = 3
 
   node_config {
     oauth_scopes = [
