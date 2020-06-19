@@ -17,3 +17,7 @@ resource "google_container_cluster" "primary" {
     }
   }
 }
+
+output "env-dynamic-url" {
+  value = "https://${google_container_cluster.primary.endpoint}"
+}
