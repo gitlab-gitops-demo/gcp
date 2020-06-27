@@ -1,8 +1,9 @@
 // Configure the Google Cloud resources
 resource "google_container_cluster" "primary" {
-  name               = "gitops-demo-gke"
-  location           = "us-west1-a"
-  initial_node_count = 3
+  name                = "gitops-demo-gke"
+  location            = "us-west1-a"
+  initial_node_count  = 3
+  cluster_autoscaling = "true"
 
   node_config {
     oauth_scopes = [
