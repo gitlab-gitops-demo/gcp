@@ -17,5 +17,3 @@ before_script:
   - export GOOGLE_PROJECT=$(cat $GOOGLE_PROJECT_FILE)
   - export GOOGLE_REGION=$(cat $GOOGLE_REGION_FILE)
   - export GITLAB_TOKEN=$(cat $GITLAB_TOKEN_FILE)
-  - *install-curl-jq
-  - *gitlab-tf-backend
