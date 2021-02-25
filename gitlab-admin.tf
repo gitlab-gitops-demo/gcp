@@ -4,7 +4,6 @@ provider "kubernetes" {
   host                   = google_container_cluster.primary.endpoint
   cluster_ca_certificate = base64decode(google_container_cluster.primary.master_auth.0.cluster_ca_certificate)
   token                  = data.google_client_config.current.access_token
-  load_config_file       = false
 }
 
 resource "kubernetes_service_account" "gitlab-admin" {
@@ -19,7 +18,7 @@ resource "kubernetes_secret" "gitlab-admin" {
     name      = "gitlab-admin"
     namespace = "kube-system"
     annotations = {
-      "kubernetes.io/service-account.name" = "${kubernetes_service_account.gitlab-admin.metadata.0.name}"
+      "kubernetes.io/service-account.name" = "kubernetes_service_account.gitlab-admin.metadata.0.name"
     }
   }
   lifecycle {
@@ -32,7 +31,7 @@ resource "kubernetes_secret" "gitlab-admin" {
 
 data "kubernetes_secret" "gitlab-admin-token" {
   metadata {
-    name      = "${kubernetes_service_account.gitlab-admin.default_secret_name}"
+    name      = kubernetes_service_account.gitlab-admin.default_secret_name
     namespace = "kube-system"
   }
 }
