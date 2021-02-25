@@ -1,20 +1,18 @@
 include:
   - project: 'gitops-demo/infra/templates'
     file: '/terraform.gitlab-ci.yml'
+    ref: use-gitlab-secrets
 
 .secrets:
   secrets:
     GOOGLE_CREDENTIALS_FILE:
       vault: infrastructure/gcp/GOOGLE_CREDENTIALS@secret
-      file: false
     GOOGLE_PROJECT_FILE:
       vault: infrastructure/gcp/GOOGLE_PROJECT@secret
-      file: false
     GOOGLE_REGION_FILE:
       vault: infrastructure/gcp/GOOGLE_REGION@secret
-      file: false
     GITLAB_TOKEN_FILE:
       vault: infrastructure/gitlab/GITLAB_TOKEN@secret
-      file: false
+
 
 
