@@ -11,10 +11,6 @@ data "gitlab_projects" "cluster-management-search" {
   max_queryable_pages = 1
 }
 
-provider "gitlab" {
-  version = ">=2.9.0"
-}
-
 resource "gitlab_group_cluster" "gke_cluster" {
   group                 = data.gitlab_group.gitops-demo-apps.id
   name                  = google_container_cluster.primary.name
