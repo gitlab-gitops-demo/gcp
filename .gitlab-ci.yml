@@ -1,7 +1,6 @@
 include:
   - project: 'gitops-demo/infra/templates'
     file: '/terraform.gitlab-ci.yml'
-    ref: use-gitlab-secrets
 
 .secrets:
   secrets:
