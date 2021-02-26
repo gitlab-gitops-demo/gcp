@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     gitlab = {
-      source  = "terraform-providers/gitlab"
+      source  = "gitlabhq/gitlab"
       version = ">=2.9.0"
     }
     google = {
