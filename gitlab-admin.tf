@@ -13,22 +13,6 @@ resource "kubernetes_service_account" "gitlab-admin" {
   }
 }
 
-resource "kubernetes_secret" "gitlab-admin" {
-  metadata {
-    name      = "gitlab-admin"
-    namespace = "kube-system"
-    annotations = {
-      "kubernetes.io/service-account.name" = "kubernetes_service_account.gitlab-admin.metadata.0.name"
-    }
-  }
-  lifecycle {
-    ignore_changes = [
-      data
-    ]
-  }
-  type = "kubernetes.io/service-account-token"
-}
-
 data "kubernetes_secret" "gitlab-admin-token" {
   metadata {
     name      = kubernetes_service_account.gitlab-admin.default_secret_name
