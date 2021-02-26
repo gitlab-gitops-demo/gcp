@@ -3,7 +3,8 @@ include:
     file: '/terraform.gitlab-ci.yml'
     ref: use-gitlab-secrets
 
-secrets:
+.secrets:
+  secrets:
     GOOGLE_CREDENTIALS_FILE:
       vault: infrastructure/gcp/GOOGLE_CREDENTIALS@secret
     GOOGLE_PROJECT_FILE:
