@@ -2,8 +2,7 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/gitlabhq/gitlab" {
-  version     = "3.5.0"
-  constraints = ">= 3.5.0"
+  version = "3.5.0"
   hashes = [
     "h1:OPAh3smkOF5k4fkr4pDrKFBfFgx+oGq96Zvn+HEpNRs=",
     "zh:20a7e10d88020a88f1aedd93d1de9a70efcc192f5c630df6a7818c4c3e501ac5",
