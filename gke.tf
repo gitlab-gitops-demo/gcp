@@ -4,7 +4,7 @@ resource "google_container_cluster" "primary" {
   location                 = "us-west1-a"
   remove_default_node_pool = true
   initial_node_count       = 1
-
+  min_master_version       = "1.20"
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
