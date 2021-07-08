@@ -4,17 +4,15 @@ include:
 
 .secrets:
   secrets:
-    GOOGLE_CREDENTIALS_FILE:
+    GOOGLE_CREDENTIALS:
       vault: infrastructure/gcp/GOOGLE_CREDENTIALS@secret
-    GOOGLE_PROJECT_FILE:
+      file: false
+    GOOGLE_PROJECT:
       vault: infrastructure/gcp/GOOGLE_PROJECT@secret
-    GOOGLE_REGION_FILE:
+      file: false
+    GOOGLE_REGION:
       vault: infrastructure/gcp/GOOGLE_REGION@secret
-    GITLAB_TOKEN_FILE:
+      file: false
+    GITLAB_TOKEN:
       vault: infrastructure/gitlab/GITLAB_TOKEN@secret
-
-before_script:
-  - export GOOGLE_CREDENTIALS=$(cat $GOOGLE_CREDENTIALS_FILE)
-  - export GOOGLE_PROJECT=$(cat $GOOGLE_PROJECT_FILE)
-  - export GOOGLE_REGION=$(cat $GOOGLE_REGION_FILE)
-  - export GITLAB_TOKEN=$(cat $GITLAB_TOKEN_FILE)
+      file: false
