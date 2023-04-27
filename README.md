@@ -9,3 +9,5 @@ See [Global Readme file](https://gitlab.com/gitops-demo/readme/-/blob/master/REA
 ├── gitlab-admin.tf    # Adding kubernetes service account
 └── group_cluster.tf   # Registering kubernetes cluster to GitLab `apps` Group
 ```
+
+Add a line
